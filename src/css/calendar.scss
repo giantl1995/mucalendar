@@ -1,0 +1,84 @@
+$color-disable: #efefef;
+$color-calendar: #6d82a5;
+.container-general {
+    height: 100%;
+    position: relative;
+    .calendar-container {
+        margin: auto;
+        max-width: 1200px;
+        .calendar_body {
+            overflow: hidden;
+            box-shadow: 0 2px 20px $color_secundary;
+            border-radius: 10px;
+            background: #fff;
+            .calendar {
+                display: grid;
+                width: 100%;
+                grid-template: {
+                    columns: repeat(7, minmax(120px, 1fr));
+                    rows: 50px;
+                }
+                grid-auto-rows: 130px;
+                overflow: auto;
+                .day {
+                    border-bottom: 1px solid rgb(214, 214, 216);
+                    border-right: 1px solid rgba(166, 168, 179, 0.12);
+                    text-align: left;
+                    padding: 14px 20px;
+                    letter-spacing: 1px;
+                    font-size: 12px;
+                    box-sizing: border-box;
+                    color: $color_secundary;
+                    position: relative;
+                    z-index: 1;
+                    font-size: 18px;
+                    font-family: $font-bold;
+                    &:nth-of-type(7n + 7) {
+                        border-right: 0;
+                    }
+                    @for $i from 1 through 5 {
+                        &:nth-of-type(n + #{$i*7-6 }):nth-of-type(-n + #{$i*7}) {
+                            grid-row: $i +1;
+                        }
+                    }
+                    @for $i from 1 through 7 {
+                        &:nth-of-type(7n + #{$i}) {
+                            grid-column: #{$i}/#{$i};
+                        }
+                    }
+                }
+                .day_now {
+                    border-top: 6px solid $color-calendar;
+                    padding: 8px 20px;
+                    color: $color-calendar;
+                }
+                .day-name {
+                    font-size: 18px;
+                    color: #1a1a1a;
+                    text-align: left;
+                    border-bottom: 1px solid rgb(72, 73, 76);
+                    line-height: 50px;
+                    font-weight: 500;
+                    padding-left: 15px;
+                    font-family: $font-bold;
+                    background-color: $color-calendar;
+                    ;
+                }
+                .day--disabled {
+                    color: #949393;
+                    background-color: $color-disable;
+                    cursor: not-allowed;
+                    font-size: 20px;
+                }
+            }
+        }
+        .calendar_header {
+            @include between;
+            p {
+                font-size: 30px;
+                color: $color-disable;
+                font-family: $font-bold;
+            }
+        }
+    }
+}

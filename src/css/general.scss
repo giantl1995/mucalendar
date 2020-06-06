@@ -1,0 +1,43 @@
+@import './fonts.css';
+$color_primary: #4286f4;
+$color_secundary: #373B44;
+$font_mediun:Ubuntu-medium;
+$font_bold:Ubuntu-bold;
+$font_light:Ubuntu-light;
+body {
+    background: $color_primary;
+    background: -webkit-linear-gradient(to right, $color_primary, $color_secundary);
+    background: linear-gradient(to right, $color_primary, $color_secundary);
+    font-family: $font_mediun, Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    color: #373B44;
+    text-align: center;
+}
+
+@mixin img {
+    height: 50px;
+    width: 50px;
+    display: block;
+    cursor: pointer;
+}
+
+@mixin between {
+    display: flex;
+    justify-content: space-between;
+    align-content: space-between;
+    align-items: center;
+}
+
+.arrow_left {
+    @include img;
+    background-image: url('./img/arrow_left.png');
+    background-repeat: no-repeat;
+}
+
+.arrow_right {
+    @include img;
+    background-image: url('./img/arrow_right.png');
+    background-repeat: no-repeat;
+}
