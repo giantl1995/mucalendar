@@ -2,7 +2,7 @@ export class Calendar {
     constructor(month, year) {
         this.day_now = new Date();
         this.day_now.setHours(0, 0, 0, 0)
-        console.log(this.day_now)
+
         this.generateDate(month, year);
     }
     generateDate(month, year) {
